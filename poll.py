@@ -5,7 +5,7 @@ from pytz import timezone
 from telegram.ext import Updater, Handler, MessageHandler, Filters
 from telegram import Update, Poll
 
-config = ""
+config = "688265239:AAEq33i2ipJ-1aZioAnodAvFr8Pm6tpSe9A"
 # chat_id = getenv("CHAT_ID")
 usmShopingId = 1001497859545
 
@@ -18,7 +18,7 @@ def poller(context):
     bot.sendPoll(chat_id=-1001497859545, question=question, options=["+", "-"], is_anonymous=False)
 
 time = time(13,20,00, 0000)
-updater.dispatcher.job_queue.run_daily(poller, time, days=(6,))
+updater.dispatcher.job_queue.run_daily(poller, time, days=(0,1,2,3,4,5,6))
 
 updater.start_polling()
 updater.idle()
