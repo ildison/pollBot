@@ -1,1 +1,1 @@
-bot: python3 poll.py
+worker: python3 poll.py
