@@ -1,28 +1,22 @@
 from datetime import datetime, time
-from os import getenv
-from pytz import timezone
+from os import environ
+from telegram.ext import Updater
 
-from telegram.ext import Updater, Handler, MessageHandler, Filters
-from telegram import Update, Poll
+token = environ["TOKEN"]
+chat_id = environ["TESTGROUPID"]
 
-config = "688265239:AAEq33i2ipJ-1aZioAnodAvFr8Pm6tpSe9A"
-# chat_id = getenv("CHAT_ID")
-usmShopingId = 1001497859545
-
-updater = Updater(token=config, use_context=True)
+updater = Updater(token=token)
 
 def poller(context):
     bot = context.bot
     today = datetime.now().strftime("%d.%m")
     question = f"Футбол. {today}"
-    bot.sendPoll(chat_id=-1001497859545, question=question, options=["+", "-"], is_anonymous=False)
+    try:
+        bot.send_poll(chat_id=chat_id, question=question, options=["+", "-"], is_anonymous=False)
+    except Exception as error:
+        print(error)
 
-time = time(13,20,00, 0000)
+time = time(18,44,40, 0000)
 updater.dispatcher.job_queue.run_daily(poller, time, days=(0,1,2,3,4,5,6))
-
-updater.start_polling()
+updater.dispatcher.job_queue.start()
 updater.idle()
-
-
-
-# https://api.telegram.org/bot688265239:AAEq33i2ipJ-1aZioAnodAvFr8Pm6tpSe9A/getUpdates // get chat id

@@ -1,4 +1,4 @@
-#!/Users/ildison/Desktop/pollBot/poll/bin/python3
+#!/Users/ildison/Desktop/pollBot/poll/bin/python3.9
 # -*- coding: utf-8 -*-
 import re
 import sys
