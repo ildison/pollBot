@@ -24,7 +24,7 @@ def pinMessage(message):
     print("PollBot pined message")
 
 def scheduleUnpinningMessage(message):
-    jobQueue.run_once(unpinMessage, context=message, when=200)
+    jobQueue.run_once(unpinMessage, context=message, when=1800) # 1800 sec == 3 min
     print("PollBot scheduled unpinning message")
 
 def poller(context):
@@ -40,7 +40,7 @@ def poller(context):
     pinMessage(message)
     scheduleUnpinningMessage(message)
 
-time = time(18,00,50, 0000)
+time = time(7,00,50, 0000)
 jobQueue.run_daily(poller, time, days=(0,1,2,3,4,5,6))
 jobQueue.start()
 print("PollBot started")
