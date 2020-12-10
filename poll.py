@@ -36,7 +36,7 @@ def poller(context):
         message = pollBot.sendPoll(chat_id=chat_id, question=question, options=["+", "-"], is_anonymous=False)
     except Exception as error:
         print(error)
-    print(f"PollBot created a new poll with question {question}")
+    print(f"PollBot created a new poll with question \"{question}\"")
     pinMessage(message)
     scheduleUnpinningMessage(message)
 
