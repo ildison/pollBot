@@ -18,7 +18,7 @@ def poller(context):
         print(error)
     print(f"PollBot created a new poll with question {question}")
 
-time = time(15,55,55, 0000)
+time = time(16,10,55, 0000)
 updater.dispatcher.job_queue.run_daily(poller, time, days=(0,1,2,3,4,5,6))
 updater.dispatcher.job_queue.start()
 print("PollBot started")
