@@ -1,9 +1,9 @@
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
 from os import environ
 from telegram.ext import Updater
 
 token = environ["TOKEN"]
-chat_id = environ["TESTGROUPID"]
+chat_id = environ["GROUPID"]
 
 updater = Updater(token=token)
 jobQueue = updater.dispatcher.job_queue
@@ -24,7 +24,7 @@ def pinMessage(message):
     print("PollBot pined message")
 
 def scheduleUnpinningMessage(message):
-    jobQueue.run_once(unpinMessage, context=message, when=1800) # 1800 sec == 3 min
+    jobQueue.run_once(unpinMessage, context=message, when=timedelta(days=3))
     print("PollBot scheduled unpinning message")
 
 def poller(context):
@@ -40,8 +40,8 @@ def poller(context):
     pinMessage(message)
     scheduleUnpinningMessage(message)
 
-time = time(7,00,50, 0000)
-jobQueue.run_daily(poller, time, days=(0,1,2,3,4,5,6))
+time = time(19,20,00, 0000) # UTC time
+jobQueue.run_daily(poller, time, days=(5,)) # saturday
 jobQueue.start()
 print("PollBot started")
 updater.idle()
