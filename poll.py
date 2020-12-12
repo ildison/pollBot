@@ -40,7 +40,7 @@ def poller(context):
     pinMessage(message)
     scheduleUnpinningMessage(message)
 
-time = time(19,20,00, 0000) # UTC time
+time = time(13,50,00, 0000) # UTC time
 jobQueue.run_daily(poller, time, days=(5,)) # saturday
 jobQueue.start()
 print("PollBot started")
