@@ -1,0 +1,1 @@
+This bot does the polling routine of my soccer telegram chat.
