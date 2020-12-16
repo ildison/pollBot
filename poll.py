@@ -28,8 +28,8 @@ def scheduleUnpinningMessage(message):
     print("PollBot scheduled unpinning message")
 
 def poller(context):
-    today = datetime.now().strftime("%d.%m")
-    question = f"Футбол. {today}"
+    nextMonday = (datetime.now() + timedelta(days=2)).strftime("%d.%m")
+    question = f"Футбол. {nextMonday}"
 
     print("PollBot will create a new poll")
     try:
