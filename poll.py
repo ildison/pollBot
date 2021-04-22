@@ -28,8 +28,8 @@ def scheduleUnpinningMessage(message):
     print("PollBot scheduled unpinning message")
 
 def poller(context):
-    nextMonday = (datetime.now() + timedelta(days=2)).strftime("%d.%m")
-    question = f"Футбол. {nextMonday}"
+    nextWednesday = (datetime.now() + timedelta(days=2)).strftime("%d.%m")
+    question = f"Футбол. {nextWednesday}"
 
     print("PollBot will create a new poll")
     try:
@@ -40,8 +40,8 @@ def poller(context):
     pinMessage(message)
     scheduleUnpinningMessage(message)
 
-time = time(13,50,00, 0000) # UTC time
-jobQueue.run_daily(poller, time, days=(5,)) # saturday
+time = time(13,20,00, 0000) # UTC time
+jobQueue.run_daily(poller, time, days=(0,)) # saturday
 jobQueue.start()
 print("PollBot started")
 updater.idle()
